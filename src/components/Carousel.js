@@ -18,7 +18,7 @@ export default function SimpleSlider() {
       <Slider {...settings}>
         <div className="h-[600px] w-80">
           <img
-            src="https://blogmedia.recurpost.com/wp-content/uploads/2021/04/digital-marketing-ideas-for-fashion-brands-recurpost-1-1024x576.jpg"
+            src="https://content.jdmagicbox.com/comp/ahmedabad/y1/079pxx79.xx79.130817155323.z5y1/catalogue/aroma-mens-wear-satellite-ahmedabad-tailors-2gfyny8.jpg"
             className="w-full h-full "
           />
         </div>
@@ -54,7 +54,7 @@ export default function SimpleSlider() {
         </div>
         <div className="h-[600px] w-80">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXLZxGn7dKr_QjfanQ4fTuSC612u-Nb7pUuQ&usqp=CAU"
+            src="https://dongyi.hk/wp-content/uploads/2022/11/slider-1.jpg"
             className="h-full w-full "
           />{" "}
         </div>

@@ -13,9 +13,9 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 pl-[270px] pr-20">
             <div className="mb-5">
               <h4 className="py-2 text-xl font-bold text-[#ffffff]">Company</h4>
-              A123 Lost street<br></br>
-              chandigarh,PB 243233<br></br>
-              india <br></br>
+              A123 uttar street<br></br>
+              Baridhara, Dhaka<br></br>
+              Bangladesh <br></br>
               <strong>Phone:</strong>+1 232 2321 4543 <br></br>
               <strong>Email:</strong>info@example.com<br></br>
             </div>

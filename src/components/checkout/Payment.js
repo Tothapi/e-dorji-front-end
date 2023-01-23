@@ -11,7 +11,16 @@ function Payment() {
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
-      <Grid>
+      <div className="grid grid-cols-2 pb-20">
+        <div className="text-3xl">
+          <input type="checkbox" className="w-[50px] h-[50px]" /> Cash on
+          delivery
+        </div>
+        <div className="text-3xl">
+          <input type="checkbox" className="w-[50px] h-[50px]" /> Pay with Bkash
+        </div>
+      </div>
+      {/* <Grid>
         <Grid>
           <TextField required id="cardName" label="Name on card" fullWidth />
         </Grid>
@@ -36,7 +45,7 @@ function Payment() {
             label="Remember credit card details for next time"
           />
         </Grid>
-      </Grid>
+      </Grid> */}
     </React.Fragment>
   );
 }

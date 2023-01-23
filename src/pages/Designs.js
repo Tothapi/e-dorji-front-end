@@ -13,6 +13,7 @@ export default function Designs() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [type, setType] = useState("");
+  const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [designs, setDesigns] = useState([]);
   const user = useSelector((state) => state.user);
@@ -37,10 +38,15 @@ export default function Designs() {
             id: data?.design?._id,
             title,
             description,
+            price,
             productType: type,
           }),
         })
-          .then((res) => getDesigns())
+          .then((res) =>
+            setTimeout(() => {
+              getDesigns();
+            }, 2000)
+          )
           .catch((err) => console.log(err, "err"));
       })
       .catch((error) => {
@@ -80,6 +86,8 @@ export default function Designs() {
         // setOpenLogin={setOpenLogin}
         // setOpenRegister={setOpenRegister}
         >
+          <h1 className="text-4xl font-extrabold text-primary">Products</h1>
+
           <div className="my-20 grid grid-cols-4 gap-10">
             {designs?.map((design) => {
               return (
@@ -89,13 +97,13 @@ export default function Designs() {
               );
             })}
           </div>
-          {user?.email === "tothapi@gmail.com" && (
+          {user?.email === "tothapi@gmail.com" ? (
             <div>
-              <h2 className="text-primary">Add Designs</h2>
+              <h2 className="text-primary text-xl mb-5">Add Designs</h2>
 
               <div className="w-full flex justify-center">
                 <form onSubmit={submitHandler}>
-                  <div className="flex items-center gap-x-20">
+                  <div className="flex items-center gap-x-20 pb-5">
                     <label>title</label>
                     <input
                       name="title"
@@ -103,7 +111,7 @@ export default function Designs() {
                       className="focus:outline-none border border-[#e6e6e6] "
                     />
                   </div>
-                  <div className="flex items-center gap-x-20">
+                  <div className="flex items-center gap-x-20 pb-5">
                     <label>type</label>
                     <select
                       onChange={(event) => setType(event.target.value)}
@@ -128,7 +136,7 @@ export default function Designs() {
                   className="focus:outline-none border border-[#e6e6e6] "
                 /> */}
                   </div>
-                  <div className="flex items-center gap-x-20">
+                  <div className="flex items-center gap-x-5 pb-5">
                     <label>Description</label>
                     <textarea
                       value={description}
@@ -136,7 +144,16 @@ export default function Designs() {
                       className="focus:outline-none border border-[#e6e6e6] "
                     />
                   </div>
-                  <div className="flex items-center gap-x-20">
+                  <div className="flex items-center gap-x-[70px] pb-5">
+                    <label>Price</label>
+                    <input
+                      type="number"
+                      name="price"
+                      onChange={(e) => setPrice(e.target.value)}
+                      className="focus:outline-none border border-[#e6e6e6] "
+                    />
+                  </div>
+                  <div className="flex items-center gap-x-[70px]">
                     <label>image</label>
                     <input
                       type="file"
@@ -145,10 +162,17 @@ export default function Designs() {
                       className="focus:outline-none border border-[#e6e6e6] "
                     />
                   </div>
-                  <button type="submit">add</button>
+                  <button
+                    className="bg-primary text-[#ffffff] px-4 py-2 mt-8"
+                    type="submit"
+                  >
+                    add
+                  </button>
                 </form>
               </div>
             </div>
+          ) : (
+            <div></div>
           )}
         </PrimarySearchAppBar>
         <div>

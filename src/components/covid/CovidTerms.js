@@ -8,9 +8,14 @@ const CovidTerms = () => {
       <p className="flex items-center ">
         <AiFillInfoCircle />
         &nbsp; Your safety is our top priority &nbsp;
-        <span className="hover:underline cursor-pointer">
-          See our guidance on COVID-19
-        </span>
+        <a
+          href="http://corona.gov.bd/?gclid=Cj0KCQiA_bieBhDSARIsADU4zLc4rYOIWENiWSMBFJbnV4DFAEkFeYb4YhtC9L6VXJerdxdeTrIWrrUaAmsGEALw_wcB"
+          target="_blank"
+        >
+          <span className="hover:underline cursor-pointer">
+            See our guidance on COVID-19
+          </span>
+        </a>
       </p>
     </div>
   );

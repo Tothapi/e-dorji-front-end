@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { BouncyDiv } from "../../pages/Home";
 import "./Paralax.css";
 
@@ -16,8 +17,9 @@ const Paralax = () => {
         <BouncyDiv>
           <h4 className="honeymoon-title">80% off any package</h4>
         </BouncyDiv>
-
-        <button className="booking-button fs-1 fw-bold">Book Now</button>
+        <Link to="/designs">
+          <button className="booking-button fs-1 fw-bold">Book Now</button>
+        </Link>
       </div>
       <div className="parallax-content honeymoon-conditions">
         <h1 className="honeymoon-title">
@@ -26,9 +28,10 @@ const Paralax = () => {
         <ol className="text-xs text-gray-400 font-semibold">
           <li>
             Our CEO of this company have to be invited in your wedding
-            ceremony.Our CEO had to attend your program.You have to take at
-            least 3 of our packages previously.Which Marrige package to give you
-            , it's depend on us.You can't sue us for this package
+            ceremony.Our CEO had to attend your program.
+            <br /> You have to take at least 3 of our packages previously.Which
+            Marrige package to give you , it's depend on us.You can't sue us for
+            this package
           </li>
         </ol>
       </div>

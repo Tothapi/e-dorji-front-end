@@ -44,7 +44,8 @@ function Review(props) {
     console.log(cart.cart, "cart.cart");
     const initialValue = 0;
     const sum = cart.cart.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.quantity * 10,
+      (accumulator, currentValue) =>
+        accumulator + currentValue.quantity * currentValue.price,
       0
     );
 
@@ -66,7 +67,7 @@ function Review(props) {
           <ListItem className="{.listItem}" key={product.id}>
             <ListItemText primary={product.title} secondary={product.desc} />
             <Typography variant="body2">
-              {10} x {product.quantity}
+              {product?.price} x {product.quantity}
             </Typography>
           </ListItem>
         ))}

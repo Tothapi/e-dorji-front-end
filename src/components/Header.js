@@ -22,10 +22,14 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import DiamondIcon from "@mui/icons-material/Diamond";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import MailIcon from "@mui/icons-material/Mail";
 import CovidTerms from "./covid/CovidTerms";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AnchorIcon from "@mui/icons-material/Anchor";
 import { useSelector } from "react-redux";
 import { useClearUser, useToken } from "../hooks/useAuth";
 
@@ -195,19 +199,28 @@ export default function MiniDrawer({ children }) {
               <MenuIcon />
             </IconButton>
             <div className="w-full flex items-center justify-between">
-              <Typography variant="h6" noWrap component="div">
-                E-Doiji
-              </Typography>
+              <Link to="/">
+                <Typography
+                  className="font-extrabold"
+                  variant="h6"
+                  noWrap
+                  component="div"
+                >
+                  E-Doiji
+                </Typography>
+              </Link>
               <div className="flex items-center gap-10">
-                <IconButton aria-label="cart">
-                  <StyledBadge
-                    badgeContent={cart.cart.length ? cart.cart.length : "0"}
-                    color={"warning"}
-                  >
-                    <ShoppingCartIcon className="text-white" />
-                  </StyledBadge>
-                </IconButton>
-                <Link to="/about">
+                <Link to="/checkout">
+                  <IconButton aria-label="cart">
+                    <StyledBadge
+                      badgeContent={cart.cart.length ? cart.cart.length : "0"}
+                      color={"warning"}
+                    >
+                      <ShoppingCartIcon className="text-white" />
+                    </StyledBadge>
+                  </IconButton>
+                </Link>
+                <Link to="/experts">
                   <span className="cursor-pointer">About US</span>
                 </Link>
                 <Link to="/contact">
@@ -300,7 +313,7 @@ export default function MiniDrawer({ children }) {
                       justifyContent: "center",
                     }}
                   >
-                    <InboxIcon />
+                    <SupportAgentIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Service Providers"
@@ -329,7 +342,7 @@ export default function MiniDrawer({ children }) {
                       justifyContent: "center",
                     }}
                   >
-                    <InboxIcon />
+                    <DiamondIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Meet fashion experts"
@@ -354,7 +367,7 @@ export default function MiniDrawer({ children }) {
                       justifyContent: "center",
                     }}
                   >
-                    <InboxIcon />
+                    <ShoppingCartCheckoutIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Checkout"
@@ -383,7 +396,7 @@ export default function MiniDrawer({ children }) {
                       justifyContent: "center",
                     }}
                   >
-                    <InboxIcon />
+                    <AnchorIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Catalogue"

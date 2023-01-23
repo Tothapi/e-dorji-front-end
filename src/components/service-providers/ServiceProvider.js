@@ -8,20 +8,20 @@ export default function ServiceProvider() {
           <div className="rounded-t-lg h-32 overflow-hidden">
             <img
               className="object-cover object-top w-full"
-              src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+              src="https://gumlet.assettype.com/bdnews24-english/import/media/2019/12/16/us-garment-factory-161219-01.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max"
               alt="Mountain"
             />
           </div>
           <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
             <img
               className="object-cover object-center h-32"
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+              src="https://images.prothomalo.com/prothomalo-english%2F2022-06%2Fa5cedbc1-f863-4e8e-baea-a476ce21ef6b%2Fprothomalo_bangla_2022_06_face7f5c_3f34_47a7_b704_55e7468bb464_Untitled_2.webp?rect=0%2C0%2C800%2C420&w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&overlay=&overlay_position=bottom&overlay_width_pct=1"
               alt="Woman looking front"
             />
           </div>
           <div className="text-center mt-2">
-            <h2 className="font-semibold">Sarah Smith</h2>
-            <p className="text-gray-500">Freelance Web Designer</p>
+            <h2 className="font-semibold">MD. Mohubullah</h2>
+            <p className="text-gray-500">Senior Product Manager</p>
           </div>
           <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
             <li className="flex flex-col items-center justify-around">

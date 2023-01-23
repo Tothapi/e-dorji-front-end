@@ -75,10 +75,14 @@ export default function Catalogue() {
               );
             })}
           </div> */}
-          add catalogue
-          <div className="w-full flex justify-center">
-            <form onSubmit={submitHandler}>
-              <div className="flex items-center gap-x-20">
+
+          <div className="w-full  min-h-[50vh]">
+            <h1>Add Catalogue</h1>
+            <form
+              className="flex flex-col justify-center"
+              onSubmit={submitHandler}
+            >
+              <div className="flex items-center gap-x-20 pb-5">
                 <label>title</label>
                 <input
                   name="title"
@@ -86,7 +90,7 @@ export default function Catalogue() {
                   className="focus:outline-none border border-[#e6e6e6] "
                 />
               </div>
-              <div className="flex items-center gap-x-20">
+              <div className="flex items-center gap-x-[65px] pb-5">
                 <label>image</label>
                 <input
                   type="file"
@@ -118,7 +122,12 @@ export default function Catalogue() {
                   className="focus:outline-none border border-[#e6e6e6] "
                 /> */}
               </div>
-              <button type="submit">add</button>
+              <button
+                className="bg-primary text-[#ffffff] px-4 py-1 w-fit ml-40 mt-5"
+                type="submit"
+              >
+                add
+              </button>
             </form>
           </div>
         </PrimarySearchAppBar>

@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "@mui/material/Modal";
 import ForwardTwoToneIcon from "@mui/icons-material/ForwardTwoTone";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DoneAllSharpIcon from "@mui/icons-material/DoneAllSharp";
 import CatalogCard from "./catalogue/CatalogCard";
 
 const style = {
@@ -46,7 +48,7 @@ export default function DesignCard({ design }) {
   useEffect(() => {
     getCatalogues();
   }, [design?._id]);
-  // console.log(catalogue, "catalogue");
+  console.log(design, "price");
   return (
     <div className="border-4 border-[#e6e6e6] rounded-t-lg">
       <Modal
@@ -134,13 +136,14 @@ export default function DesignCard({ design }) {
                     addToCart({
                       id: design._id,
                       title: design.title,
+                      price: design.price,
                     })
                   );
                   handleClose();
                 }}
                 className="bg-[#f39422] text-white font-bold text-lg p-2 rounded "
               >
-                Add to Cart
+                <ShoppingCartIcon /> Add to Cart
               </button>
               <div className="flex items-center gap-x-4">
                 <p className="text-[#f39422] font-semibold">
@@ -162,12 +165,13 @@ export default function DesignCard({ design }) {
           onClick={handleOpen}
           className="bg-[#f39422] text-[#ffffff] font-bold text-lg p-2 px-6 rounded mybuttonoverlap btn btn-info"
         >
-          Get now
+          <DoneAllSharpIcon /> Get now
         </button>
       </div>
       <p
         title={design.title}
-        className="p-2 text-center text-2xl font-extrabold underline"
+        className="p-2 text-center text-2xl font-extrabold cursor-pointer hover:underline"
+        onClick={() => navigate(`/designs/${design._id}`)}
       >
         {design.title}
       </p>
@@ -178,12 +182,13 @@ export default function DesignCard({ design }) {
             : design?.description ||
               "gahhsvad dwgghqwegwq d adbqwqwjhwgfewg  fwediuwhrhew"}
         </p>
-        <div
-          onClick={() => navigate(`/designs/${design._id}`)}
-          className="flex justify-end"
-          title="Details"
-        >
-          <ForwardTwoToneIcon className="text-primary cursor-pointer w-[50px] font-extrabold " />
+
+        <div className="flex justify-between items-center" title="Details">
+          <div className="italic text-primary">{design?.price} tk</div>
+          <ForwardTwoToneIcon
+            onClick={() => navigate(`/designs/${design._id}`)}
+            className="text-primary cursor-pointer w-[50px] font-extrabold "
+          />
         </div>
       </div>
     </div>
