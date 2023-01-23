@@ -5,13 +5,15 @@ import Footer from "../components/Footer";
 import DesignCard from "../components/DesignCard";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../hooks/useAuth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Catalogue() {
   let navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("men wears");
   const [catalogue, setCatalogue] = useState([]);
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ export default function Catalogue() {
     formData.append("image", image);
     formData.append("title", title);
     formData.append("productType", type);
-    console.log(formData);
+    console.log(type, "type");
     fetch("http://localhost:4000/catalogue/file-upload", {
       method: "POST",
       body: formData,
@@ -42,6 +44,7 @@ export default function Catalogue() {
       .catch((error) => {
         console.error("Error:", error);
       });
+    toast.success("Catalogue added successfully.");
   };
   const getDesigns = async () => {
     const res = await axios.get("http://localhost:4000/catalogue/");
@@ -75,6 +78,7 @@ export default function Catalogue() {
               );
             })}
           </div> */}
+          <ToastContainer />
 
           <div className="w-full  min-h-[50vh]">
             <h1>Add Catalogue</h1>
@@ -95,6 +99,7 @@ export default function Catalogue() {
                 <input
                   type="file"
                   name="image"
+                  accept="image/png"
                   onChange={(e) => setImage(e.target.files[0])}
                   className="focus:outline-none border border-[#e6e6e6] "
                 />

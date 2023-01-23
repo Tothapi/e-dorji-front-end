@@ -135,8 +135,8 @@ export default function DesignCard({ design }) {
                   dispatch(
                     addToCart({
                       id: design._id,
-                      title: design.title,
-                      price: design.price,
+                      title: design?.title,
+                      price: design?.price,
                     })
                   );
                   handleClose();

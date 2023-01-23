@@ -36,7 +36,7 @@ const styles = (theme) => ({
   },
 });
 
-function Review(props) {
+function Review({ firstName, lastName, city, address, zip, payment }) {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const cart = useSelector((state) => state.cart);
@@ -55,7 +55,6 @@ function Review(props) {
     setProducts(cart.cart);
     calculateTotal();
   }, []);
-  console.log(cart, "..cart");
 
   return (
     <React.Fragment>
@@ -67,6 +66,7 @@ function Review(props) {
           <ListItem className="{.listItem}" key={product.id}>
             <ListItemText primary={product.title} secondary={product.desc} />
             <Typography variant="body2">
+              {console.log(product?.price, "price")}
               {product?.price} x {product.quantity}
             </Typography>
           </ListItem>
@@ -83,14 +83,21 @@ function Review(props) {
           <Typography variant="h6" gutterBottom className="{.title}">
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(", ")}</Typography>
+          <Typography gutterBottom>
+            {firstName} {lastName}
+          </Typography>
+          <Typography gutterBottom>{city} </Typography>
+          <Typography gutterBottom>{zip} </Typography>
+          <Typography gutterBottom>
+            {address || addresses.join(", ")}
+          </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className="{.title}">
             Payment details
           </Typography>
-          <Grid container>
+          {payment}
+          {/* <Grid container>
             {payments.map((payment) => (
               <React.Fragment key={payment.name}>
                 <Grid item xs={6}>
@@ -101,7 +108,7 @@ function Review(props) {
                 </Grid>
               </React.Fragment>
             ))}
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
     </React.Fragment>

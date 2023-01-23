@@ -12,6 +12,7 @@ import Checkout from "./pages/Checkout";
 import { useToken } from "./hooks/useAuth";
 import Catalogue from "./pages/Catalogue";
 import SingleDesign from "./pages/SingleDesign";
+import Faq from "./pages/Faq";
 
 function PrivateRoute({ children }) {
   // const Navigate = useNavigation();
@@ -35,6 +36,7 @@ function App() {
           <Route path="/service-providers" element={<ServiceProviders />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/catalogue" element={<Catalogue />} />
+          <Route path="/faq" element={<Faq />} />
           <Route
             path="/designs"
             element={

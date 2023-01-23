@@ -158,6 +158,7 @@ export default function Designs() {
                     <input
                       type="file"
                       name="image"
+                      accept="image/png"
                       onChange={(e) => setImage(e.target.files[0])}
                       className="focus:outline-none border border-[#e6e6e6] "
                     />

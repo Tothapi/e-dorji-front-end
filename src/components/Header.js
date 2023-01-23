@@ -223,8 +223,8 @@ export default function MiniDrawer({ children }) {
                 <Link to="/experts">
                   <span className="cursor-pointer">About US</span>
                 </Link>
-                <Link to="/contact">
-                  <span className="cursor-pointer">Contact US</span>
+                <Link to="/faq">
+                  <span className="cursor-pointer">FAQ</span>
                 </Link>
 
                 {!loggedIn ? (

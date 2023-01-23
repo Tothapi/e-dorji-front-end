@@ -7,7 +7,19 @@ import {
   Typography,
 } from "@mui/material";
 
-function AddressForm() {
+function AddressForm({
+  firstName,
+  lastName,
+  address,
+  city,
+  zip,
+  setFirstName,
+  setLastName,
+  setAddress,
+  setCity,
+  setZip,
+}) {
+  console.log(setFirstName, "setFirstName");
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -16,6 +28,7 @@ function AddressForm() {
       <Grid>
         <Grid>
           <TextField
+            onChange={(e) => setFirstName(e.target.value)}
             required
             id="firstName"
             name="firstName"
@@ -26,6 +39,7 @@ function AddressForm() {
         </Grid>
         <Grid>
           <TextField
+            onChange={(e) => setLastName(e.target.value)}
             required
             id="lastName"
             name="lastName"
@@ -36,6 +50,7 @@ function AddressForm() {
         </Grid>
         <Grid>
           <TextField
+            onChange={(e) => setAddress(e.target.value)}
             required
             id="address1"
             name="address1"
@@ -55,6 +70,7 @@ function AddressForm() {
         </Grid>
         <Grid item>
           <TextField
+            onChange={(e) => setCity(e.target.value)}
             required
             id="city"
             name="city"
@@ -74,6 +90,7 @@ function AddressForm() {
         <Grid item>
           <TextField
             required
+            onChange={(e) => setZip(e.target.value)}
             id="zip"
             name="zip"
             label="Zip / Postal code"

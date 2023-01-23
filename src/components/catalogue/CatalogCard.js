@@ -11,11 +11,11 @@ export default function CatalogCard({
         selected ? "border-primary" : "border-gray-400"
       }  rounded-t-lg cursor-pointer`}
     >
-      <div className="">
+      <div className="h-[280px]">
         <img
           src={image}
           alt="design"
-          className="w-full  object-contain rounded-t-lg"
+          className="w-full h-full  object-contain rounded-t-lg"
         />
       </div>
       <h2 className="text-xl font-semibold ">{name}</h2>
