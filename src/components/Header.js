@@ -117,6 +117,7 @@ export default function MiniDrawer({ children }) {
   const [open, setOpen] = React.useState(true);
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openRegister, setOpenRegister] = React.useState(false);
+
   const loggedIn = useToken();
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -143,6 +144,7 @@ export default function MiniDrawer({ children }) {
   };
   // src/pages/Cart.js
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
   // console.log("loggedIn", loggedIn);
 
   return (
@@ -267,31 +269,37 @@ export default function MiniDrawer({ children }) {
           </DrawerHeader>
           <Divider />
           <List>
-            <Link to="/designs">
-              <ListItem key="Designs" disablePadding sx={{ display: "block" }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
+            {user?.email && (
+              <Link to="/designs">
+                <ListItem
+                  key="Designs"
+                  disablePadding
+                  sx={{ display: "block" }}
                 >
-                  <ListItemIcon
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Products"
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </Link>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Products"
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            )}
 
             <Link to="/service-providers">
               <ListItem
@@ -376,35 +384,37 @@ export default function MiniDrawer({ children }) {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link to="/catalogue">
-              <ListItem
-                key="Catalogue"
-                disablePadding
-                sx={{ display: "block" }}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
+            {user?.email && (
+              <Link to="/catalogue">
+                <ListItem
+                  key="Catalogue"
+                  disablePadding
+                  sx={{ display: "block" }}
                 >
-                  <ListItemIcon
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    <AnchorIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Catalogue"
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </Link>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <AnchorIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Catalogue"
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            )}
           </List>
           <Divider />
           <List>
