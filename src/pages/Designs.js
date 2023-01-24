@@ -92,7 +92,7 @@ export default function Designs() {
             {designs?.map((design) => {
               return (
                 <div className="" key={design._id}>
-                  <DesignCard design={design} />
+                  <DesignCard getDesigns={getDesigns} design={design} />
                 </div>
               );
             })}

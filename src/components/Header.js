@@ -149,7 +149,7 @@ export default function MiniDrawer({ children }) {
 
   return (
     <>
-      <CovidTerms />
+      {/* <CovidTerms /> */}
       <Modal
         open={openRegister}
         onClose={() => {

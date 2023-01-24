@@ -91,7 +91,7 @@ const Login = ({ setOpenLogin }) => {
       handleClick();
       setSnackData(userLoginError.message);
     }
-    if (data) {
+    if (data?.email) {
       handleClick();
       console.log(data?.email, "data");
       dispatch(setter({ email: data?.email }));
@@ -99,6 +99,8 @@ const Login = ({ setOpenLogin }) => {
       setTimeout(() => {
         setOpenLogin(false);
       }, "2000");
+    } else {
+      setSnackData("Error error");
     }
   };
   console.log(setOpenLogin, "setOpenLogin");

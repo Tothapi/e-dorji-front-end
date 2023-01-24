@@ -59,7 +59,7 @@ export default function SingleDesign() {
                 {design?.title}
               </p>
               <img
-                className="h-[500px] border border-[#e6e6e6] rounded-md w-full"
+                className="h-[500px] object-contain w-full border border-[#e6e6e6] rounded-md "
                 src={`http://localhost:4000/images/${design?.file}`}
               />
             </div>

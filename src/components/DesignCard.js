@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../slices/cartSlice";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,6 +11,8 @@ import ForwardTwoToneIcon from "@mui/icons-material/ForwardTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DoneAllSharpIcon from "@mui/icons-material/DoneAllSharp";
 import CatalogCard from "./catalogue/CatalogCard";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const style = {
   position: "absolute",
@@ -24,7 +26,7 @@ const style = {
   p: 4,
 };
 
-export default function DesignCard({ design }) {
+export default function DesignCard({ design, getDesigns }) {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const id = design._id;
@@ -32,7 +34,7 @@ export default function DesignCard({ design }) {
   const [sizesForm, setSizesForm] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
   const [catalogue, setCatalogue] = React.useState(null);
-
+  const user = useSelector((state) => state.user);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getCatalogues = async () => {
@@ -45,12 +47,18 @@ export default function DesignCard({ design }) {
       )
     );
   };
+  const handleDelete = async (id) => {
+    const res = await axios.delete(`http://localhost:4000/designs/${id}`);
+    toast.success("Successfully removed.");
+    getDesigns();
+  };
   useEffect(() => {
     getCatalogues();
   }, [design?._id]);
   console.log(design, "price");
   return (
-    <div className="border-4 border-[#e6e6e6] rounded-t-lg">
+    <div className="border-4 border-[#e6e6e6] rounded-t-lg ">
+      <ToastContainer />
       <Modal
         open={open}
         onClose={handleClose}
@@ -155,9 +163,9 @@ export default function DesignCard({ design }) {
           </div>
         </Box>
       </Modal>
-      <div className="relative bg-[#fafafa] overflow-hidden  w-full h-80  mydivouter">
+      <div className="relative bg-[#fafafa] overflow-hidden  w-full h-80  mydivouter object-cover">
         <img
-          className="w-full rounded-t-md h-40 hover:scale-110 transition duration-300 ease-in-out"
+          className="w-full rounded-t-md h-40 hover:scale-110 transition duration-300 ease-in-out object-contain"
           src={`http://localhost:4000/images/${design.file}`}
         />
 
@@ -168,14 +176,16 @@ export default function DesignCard({ design }) {
           <DoneAllSharpIcon /> Get now
         </button>
       </div>
-      <p
-        title={design.title}
-        className="p-2 text-center text-2xl font-extrabold cursor-pointer hover:underline"
-        onClick={() => navigate(`/designs/${design._id}`)}
-      >
-        {design.title}
-      </p>
-      <div>
+      <div className="flex-col justify-between gap-8">
+        <p
+          title={design.title}
+          className="p-2 text-center text-2xl font-extrabold cursor-pointer hover:underline"
+          onClick={() => navigate(`/designs/${design._id}`)}
+        >
+          {design?.title?.length > 15
+            ? design?.title?.slice(0, 15) + ".."
+            : design?.title}
+        </p>
         <p className="p-2 text-center text-base text-gray">
           {design?.description?.length > 10
             ? design?.description?.slice(0, 10) + "..."
@@ -183,8 +193,23 @@ export default function DesignCard({ design }) {
               "gahhsvad dwgghqwegwq d adbqwqwjhwgfewg  fwediuwhrhew"}
         </p>
 
-        <div className="flex justify-between items-center" title="Details">
-          <div className="italic text-primary">{design?.price} tk</div>
+        <div
+          className="flex justify-between items-center py-3 px-1"
+          title="Details"
+        >
+          <div className="italic text-primary font-extrabold">
+            {design?.price} tk
+          </div>
+          {user?.email === "tothapi@gmail.com" && (
+            <div>
+              <button
+                onClick={() => handleDelete(design._id)}
+                className="bg-[#7a0707] text-[#ffffff] px-4 py-2 rounded"
+              >
+                Delete
+              </button>{" "}
+            </div>
+          )}
           <ForwardTwoToneIcon
             onClick={() => navigate(`/designs/${design._id}`)}
             className="text-primary cursor-pointer w-[50px] font-extrabold "
