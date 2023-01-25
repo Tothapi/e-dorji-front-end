@@ -200,11 +200,11 @@ export default function MiniDrawer({ children }) {
             >
               <MenuIcon />
             </IconButton>
-            <div className="w-full flex items-center justify-between">
+            <div className="w-screen flex items-center justify-between">
               <Link to="/">
                 <Typography
                   className="font-extrabold"
-                  variant="h6"
+                  variant="h4"
                   noWrap
                   component="div"
                 >

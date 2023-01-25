@@ -14,7 +14,7 @@ export default function SimpleSlider() {
     autoplay: true,
   };
   return (
-    <div className="w-[800px]">
+    <div className="w-[50vw]">
       <Slider {...settings}>
         <div className="h-[600px] w-80">
           <img

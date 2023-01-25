@@ -52,7 +52,8 @@ body {
   font-family: "Prompt", sans-serif;
   color: white; */
   overflow-x: hidden;
-  /* min-height: 100vh !important; */
+  min-height: 100vh !important;
+  width: 100vw !important;
   /* font-family: "Abril Fatface" !important; */
   font-family: "Arvo", serif !important;
 }
@@ -212,4 +213,13 @@ section {
 }
 /* .MuiDrawer-root .MuiPaper-root {
   width: 340px !important;
+} */
+/* .MuiDrawer-docked {
+  width: 12vw !important;
+}
+.MuiDrawer-docked .MuiDrawer-paper {
+  width: 12vw !important;
+} */
+/* .App .css-1191obr-MuiPaper-root-MuiAppBar-root {
+  width: 87vw !important;
 } */

@@ -37,7 +37,7 @@ export default function RecipeReviewCard({
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "#f39422" }} aria-label="recipe">
@@ -49,8 +49,8 @@ export default function RecipeReviewCard({
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="Md. Reviewer"
+        subheader="September 14, 2022"
       />
       <CardMedia
         component="img"

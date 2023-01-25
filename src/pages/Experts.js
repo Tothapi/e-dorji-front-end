@@ -10,7 +10,7 @@ export default function Experts() {
         <PrimarySearchAppBar>
           <h1 className="text-4xl font-extrabold text-primary">Experts</h1>
         </PrimarySearchAppBar>
-        <div className="pl-[300px]">
+        <div className="pl-[300px] pr-5">
           <div className="flex items-start gap-4">
             <img
               src="https://www.tuhinhossainphotography.com/wp-content/themes/tuhin-photography/assets/img/fasion/large/1.jpg"
