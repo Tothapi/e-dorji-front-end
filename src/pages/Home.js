@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../slices/counterSlice";
 import Paralax from "../components/paralax/Paralax";
+import { Link } from "react-router-dom";
 
 const bounceAnimation = keyframes`${bounce}`;
 export const BouncyDiv = styled.div`
@@ -29,18 +30,18 @@ export default function Home() {
             <SimpleSlider />
             <div>
               <h1 className="font-extrabold">E-Dorji</h1>
-              <p className="text-left">
+              <p className="text-left px-5">
                 <span className="italic text-primary font-extrabold">
                   E-dorji
                 </span>{" "}
-                is a tailors that provides customers online order and payment
-                opportunity. Using this website an user can pick a dress and
-                relative design. If the user don't like the existing designs ,
-                he/she may upload his/her own. To get measurements , user has
-                two options. If user select get sizes from home then a person
-                from the tailor will come and get the measurement from home. A
-                user has got two options to pay bill. He/she can user bkash or
-                cash-on delivery to pay bill.
+                is a dressmaking platform that provides customers online order
+                and payment opportunities. Using this website an user can pick a
+                dress and relative design. If the user don't like the existing
+                designs , he/she may upload his/her own. To get measurements ,
+                user has two options. If user select get sizes from home then a
+                person from the tailor will come and get the measurement from
+                home. A user has got two options to pay bill. He/she can user
+                bkash or cash-on delivery to pay bill.
               </p>
               <p className="pt-3 text-right">
                 <span className="italic text-primary font-extrabold">
@@ -49,6 +50,11 @@ export default function Home() {
                 provides you the most unique and customizable designs. Why
                 not...give it a try<span className="text-primary">!!!!</span>
               </p>
+              <Link to="/designs">
+                <p className="text-right cursor-pointer hover:underline text-primary">
+                  See our products
+                </p>
+              </Link>
             </div>
             {/* <div className="w-fit">
               <BouncyDiv>
