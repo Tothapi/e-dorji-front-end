@@ -208,7 +208,7 @@ export default function MiniDrawer({ children }) {
                   noWrap
                   component="div"
                 >
-                  E-Doiji
+                  E-Dorji
                 </Typography>
               </Link>
               <div className="flex items-center gap-10">
