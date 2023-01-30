@@ -6,7 +6,7 @@ import {
   StepLabel,
   Stepper,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
@@ -22,6 +22,9 @@ import Footer from "../components/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { emptyCart } from "../slices/cartSlice";
 
 const styles = (theme) => ({
   appBar: {
@@ -64,6 +67,7 @@ const steps = ["Shipping address", "Payment details", "Review your order"];
 
 export default function Checkout() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -71,10 +75,44 @@ export default function Checkout() {
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [payment, setPayment] = useState("");
+  const [total, setTotal] = useState(0);
   // console.log(setFirstName, "setFirstName");
-  const handleNext = () => {
+
+  // redux call
+  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+
+  const titleProducts = cart?.cart?.map((cart) => cart?.title);
+
+  const calculateTotal = () => {
+    const initialValue = 0;
+    const sum = cart.cart.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.quantity * currentValue.price,
+      0
+    );
+
+    setTotal(sum);
+  };
+
+  const handleNext = async () => {
     if (activeStep === steps.length - 1) {
+      if (!address) {
+        toast.warn("please add address.");
+        return;
+      }
+      if (!cart.cart?.length) {
+        toast.warn("please purchase a product.");
+        return;
+      }
+      const res = await axios.post("http://localhost:4000/checkout/cart/", {
+        userMail: user?.email,
+        address: address,
+        products: titleProducts,
+        totalPrice: total,
+      });
       toast.success("Successfully submitted.");
+      dispatch(emptyCart());
       setActiveStep(0);
       setTimeout(() => {
         navigate("/designs");
@@ -93,6 +131,9 @@ export default function Checkout() {
   const handleReset = () => {
     setActiveStep(0);
   };
+  useEffect(() => {
+    calculateTotal();
+  }, []);
   return (
     <>
       <div className="App">

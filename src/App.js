@@ -13,6 +13,7 @@ import { useToken } from "./hooks/useAuth";
 import Catalogue from "./pages/Catalogue";
 import SingleDesign from "./pages/SingleDesign";
 import Faq from "./pages/Faq";
+import AllOrders from "./pages/AllOrders";
 
 function PrivateRoute({ children }) {
   // const Navigate = useNavigation();
@@ -50,6 +51,14 @@ function App() {
             element={
               <PrivateRoute>
                 <SingleDesign />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/all-orders"
+            element={
+              <PrivateRoute>
+                <AllOrders />
               </PrivateRoute>
             }
           />

@@ -32,6 +32,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AnchorIcon from "@mui/icons-material/Anchor";
 import { useSelector } from "react-redux";
 import { useClearUser, useToken } from "../hooks/useAuth";
+import { MoneyOffCsredRounded } from "@mui/icons-material";
 
 const drawerWidth = 240;
 const style = {
@@ -384,7 +385,7 @@ export default function MiniDrawer({ children }) {
                 </ListItemButton>
               </ListItem>
             </Link>
-            {user?.email && (
+            {user?.email === "tothapi@gmail.com" && (
               <Link to="/catalogue">
                 <ListItem
                   key="Catalogue"
@@ -409,6 +410,33 @@ export default function MiniDrawer({ children }) {
                     </ListItemIcon>
                     <ListItemText
                       primary="Catalogue"
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            )}
+            {user?.email === "tothapi@gmail.com" && (
+              <Link to="/all-orders">
+                <ListItem key="order" disablePadding sx={{ display: "block" }}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <MoneyOffCsredRounded />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Admin-Order"
                       sx={{ opacity: open ? 1 : 0 }}
                     />
                   </ListItemButton>

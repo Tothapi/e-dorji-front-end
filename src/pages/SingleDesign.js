@@ -33,7 +33,7 @@ export default function SingleDesign() {
   useEffect(() => {
     getDesign();
   }, [id]);
-  console.log(design, "design");
+
   return (
     <>
       <div className="App">
